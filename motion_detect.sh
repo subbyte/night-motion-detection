@@ -96,7 +96,7 @@ for video_file in "$idir"/*; do
 
         duration=$(ffprobe -v error -select_streams v:0 -show_entries format=duration -of csv=p=0 $output_file | awk '{print int($1)}')
         if [ "$duration" -lt "$EVENT_DURATION_THRESHOLD" ]; then
-            echo "Delete short ($duration s) clip $output_file"
+            echo "Delete short clip $output_file : $duration sec"
             rm $output_file
             continue
         fi
